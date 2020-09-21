@@ -2,12 +2,7 @@ const express = require('express');
 const request = require('request');
 const app = express();
 
-const BASE_URL = '/juanedsa/meli/api';
-const BASE_URL_MELI = 'https://api.mercadolibre.com/sites/MLA/';
-const AUTHOR = {
-  name: 'Juan',
-  lastName: 'Salazar',
-};
+const { BASE_URL, BASE_URL_MELI_MLA, AUTHOR } = require('../shared/constants');
 
 app.get(BASE_URL + '/hello-world', function (req, res) {
   res.json({ hello: 'world' });
@@ -16,7 +11,7 @@ app.get(BASE_URL + '/hello-world', function (req, res) {
 app.get(BASE_URL + '/search', function (req, res) {
   const q = req.query.q;
 
-  request(BASE_URL_MELI + 'search?q=' + q, { json: true }, (err, _res, body) => {
+  request(BASE_URL_MELI_MLA + 'search?q=' + q, { json: true }, (err, _res, body) => {
     if (err) {
       return console.log(err);
     }
@@ -29,13 +24,14 @@ app.get(BASE_URL + '/search', function (req, res) {
 });
 
 function mapCategories(filters) {
-  if (filters.length) {
-    const categories = filters.filter((filter) => filter.id === 'category');
+  let categories = [];
 
-    return { categories: categories[0].values.map((categorie) => categorie.name) };
-  } else {
-    return { categories: [] };
+  if (filters.length) {
+    const categoriesArray = filters.filter((filter) => filter.id === 'category');
+    categories = categoriesArray[0].values.map((category) => category.name);
   }
+
+  return { categories };
 }
 
 function mapItems(results) {
@@ -51,7 +47,6 @@ function mapItems(results) {
         shipping: result.shipping.free_shipping,
         price: {
           amount: Math.trunc(result.price),
-          full: result.price,
           currency: result.currency_id,
           decimals: parseInt(`${result.price}`.split('.')[1]),
         },
