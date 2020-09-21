@@ -28,7 +28,7 @@ function mapCategories(filters) {
 
   if (filters.length) {
     const categoriesArray = filters.filter((filter) => filter.id === 'category');
-    categories = categoriesArray[0].values.map((category) => category.name);
+    categories = categoriesArray[0].values[0].path_from_root.map((category) => category.name);
   }
 
   return { categories };
