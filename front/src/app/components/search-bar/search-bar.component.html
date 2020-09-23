@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="search-bar">
+    <img class="search-bar__logo" src="/assets/logo.png" alt="logo mercado libre" />
+    <input class="search-bar__input" id="search" type="text" placeholder="Nunca dejes de buscar" [(ngModel)]="query" name="search" />
+    <button class="search-bar__button">
+      <img src="/assets/search.png" />
+    </button>
+  </div>
+</div>
+
+{{ query }}
