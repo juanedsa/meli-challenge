@@ -1,0 +1,110 @@
+@import './src/scss/_vars';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr minmax($min-layout, $max-layout) 1fr;
+  background-color: $grey-light;
+
+  .categories {
+    grid-column: 2;
+    padding: 16px 0;
+    color: $grey;
+    font-size: 14px;
+
+    &__category:last-child {
+      font-weight: 700;
+    }
+  }
+
+  .items {
+    grid-column: 2;
+    padding: 0 16px;
+    background-color: $white;
+    cursor: pointer;
+
+    &__item {
+      display: grid;
+      grid-template-columns: 180px 1fr 200px;
+      height: 212px;
+      border-bottom: solid 1px $grey-light;
+
+      figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .picture {
+          max-height: 180px;
+          max-width: 180px;
+          border-radius: 4px;
+        }
+      }
+
+      .description {
+        padding-left: 16px;
+        &__price {
+          font-size: 24px;
+          margin: 32px 0;
+        }
+      }
+
+      .state {
+        padding: 32px 0;
+        &__name {
+          font-size: 12px;
+          color: $grey;
+        }
+      }
+    }
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.animated-background {
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  position: relative;
+
+  &--categories {
+    height: 14px;
+    max-width: 240px;
+    position: relative;
+  }
+
+  &--image {
+    height: 180px;
+    position: relative;
+    margin-top: 16px;
+  }
+
+  &--description,
+  &--title {
+    height: 24px;
+    position: relative;
+    margin-top: 32px;
+    max-width: 120px;
+  }
+
+  &--description {
+    max-width: 320px;
+  }
+
+  &--state {
+    height: 12px;
+    position: relative;
+  }
+}
