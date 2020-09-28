@@ -10,7 +10,11 @@ const routes: Routes = [
     component: ItemsComponent
   },
   {
-    path: 'detalle',
+    path: ':query',
+    component: ItemsComponent
+  },
+  {
+    path: 'detalle/:id',
     component: DetailComponent
   }
 ];

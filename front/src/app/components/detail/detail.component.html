@@ -1,3 +1,28 @@
-<p>
-  detail works!
-</p>
+<app-search-bar (queryOutput)="search($event)"></app-search-bar>
+<section class="container">
+  <div class="detail" *ngIf="!loading">
+    <div class="detail__image">
+      <img [src]="picture" alt="" />
+    </div>
+    <div class="detail__price">
+      <p class="condition">{{ productCondition }} - {{ soldQuantity }} Vendidos</p>
+      <p class="title">{{ title }}</p>
+      <p class="price">{{ price | currency: currency:'$ ' }}</p>
+      <button class="buy-btn" type="button">Comprar</button>
+    </div>
+  </div>
+  <div class="detail" *ngIf="loading">
+    <div class="detail__image detail__image--loading">
+      <div class="animated-background animated-background--image"></div>
+    </div>
+    <div class="detail__price">
+      <p class="animated-background animated-background--condition"></p>
+      <p class="animated-background animated-background--title"></p>
+      <p class="animated-background animated-background--price"></p>
+    </div>
+  </div>
+  <div class="description" *ngIf="!loading">
+    <p class="description__title">Descripción del producto</p>
+    <p class="description__text">{{ description }}</p>
+  </div>
+</section>

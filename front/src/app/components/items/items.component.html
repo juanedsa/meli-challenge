@@ -10,13 +10,13 @@
   </div>
 
   <div class="items" *ngFor="let item of items">
-    <div class="items__item" *ngIf="!loading">
+    <div class="items__item" *ngIf="!loading" (click)="goToDetail(item.id)">
       <figure>
         <img class="picture" [src]="item.picture" alt="" />
       </figure>
       <div class="description">
         <p class="description__price">
-          {{ item.price.amount | currency: 'ARS':'$' }} <img *ngIf="item.shipping" src="/assets/shipping.png" alt="free shipping icon" />
+          {{ item.price.amount | currency: item.price.currency:'$ ' }} <img *ngIf="item.shipping" src="/assets/shipping.png" alt="free shipping icon" />
         </p>
         <p class="description__title">{{ item.title }}</p>
       </div>

@@ -30,12 +30,11 @@ function mapItem(body) {
       id: body.id,
       title: body.title,
       condition: body.condition,
-      picture: body.thumbnail,
+      picture: body.pictures[0].secure_url,
       shipping: body.shipping.free_shipping,
       sold_quantity: body.sold_quantity,
       price: {
         amount: Math.trunc(body.price),
-        full: body.price,
         currency: body.currency_id,
         decimals: parseInt(`${body.price}`.split('.')[1]),
       },

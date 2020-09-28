@@ -1,0 +1,106 @@
+@import './src/scss/_vars';
+@import './src/scss/_mixins';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr minmax($min-layout, $max-layout) 1fr;
+  grid-template-rows: 580px 1fr;
+  background-color: $grey-light;
+  min-height: 100vh;
+
+  .detail {
+    grid-column: 2;
+    background-color: $white;
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: 580px 1fr;
+
+    &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        max-width: 680px;
+      }
+
+      &--loading {
+        max-height: 360px;
+      }
+    }
+
+    &__price {
+      padding-right: 32px;
+      .condition {
+        font-size: 14px;
+        margin: 0 0 16px 0;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .price {
+        font-size: 46px;
+        margin: 32px 0;
+      }
+
+      .buy-btn {
+        border: 0;
+        background-color: $blue;
+        cursor: pointer;
+        padding: 8px 60px;
+        color: $white;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .description {
+    grid-column: 2;
+    background-color: $white;
+    padding: 32px;
+
+    &__title {
+      font-size: 28px;
+      margin: 0 0 32px 0;
+    }
+    &__text {
+      font-size: 16px;
+      margin: 0;
+      text-align: justify;
+    }
+  }
+}
+
+@include place-holder-shimmer();
+
+.animated-background {
+  @include animate-background();
+
+  &--image {
+    width: 480px;
+    height: 300px;
+    position: relative;
+  }
+
+  &--condition {
+    height: 14px;
+    position: relative;
+    margin-top: 32px;
+    max-width: 120px;
+  }
+
+  &--title {
+    height: 24px;
+    position: relative;
+    margin-top: 32px;
+    max-width: 120px;
+  }
+
+  &--price {
+    height: 48px;
+    position: relative;
+  }
+}
