@@ -45,6 +45,7 @@ function mapItems(results) {
         condition: result.condition,
         picture: result.thumbnail,
         shipping: result.shipping.free_shipping,
+        state_name: result.address.state_name,
         price: {
           amount: Math.trunc(result.price),
           currency: result.currency_id,
