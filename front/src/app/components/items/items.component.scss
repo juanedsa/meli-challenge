@@ -4,7 +4,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr minmax($min-layout, $max-layout) 1fr;
-  grid-template-rows: 48px 1fr;
+  grid-template-rows: 48px 1fr 1fr;
   background-color: $grey-light;
   height: 100vh;
 
