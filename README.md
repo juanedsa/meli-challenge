@@ -40,6 +40,15 @@ $ cd front
 $ ng serve
 ```
 
+Correr pruebas unitarias
+
+```sh
+$ ng test --no-watch --code-coverage
+```
+
+
+
+
 El frontend quedara en la ruta por defecto `localhost:4200`
 
 
