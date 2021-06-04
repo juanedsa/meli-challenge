@@ -2,8 +2,9 @@
 
 ## Stack
 
-- Angular 9.
-- NodeJS
+- Angular CLI: 12.0.3
+- Node: 14.16.0
+- Package Manager: npm 6.14.11
 
 ## Puesta en Marcha
 
