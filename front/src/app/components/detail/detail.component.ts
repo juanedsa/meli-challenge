@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailService } from '../../services/detail.service';
 
@@ -7,7 +7,7 @@ import { DetailService } from '../../services/detail.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit {
   public description: string;
   public picture: string;
   public condition: string;
@@ -26,12 +26,10 @@ export class DetailComponent {
     this.price = 0;
     this.currency = '';
     this.loading = true;
+  }
 
-    this.route.params.subscribe((params) => {
-      if (params.id) {
-        this.getDetail(params.id);
-      }
-    });
+  public ngOnInit(): void {
+    this.getParams();
   }
 
   get productCondition(): string {
@@ -40,6 +38,14 @@ export class DetailComponent {
 
   public search(query: string): void {
     this.router.navigate(['/' + query]);
+  }
+
+  private getParams(): void {
+    this.route.params.subscribe((params) => {
+      if (params.id) {
+        this.getDetail(params.id);
+      }
+    });
   }
 
   private getDetail(id: string): void {
