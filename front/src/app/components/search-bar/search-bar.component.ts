@@ -25,7 +25,7 @@ export class SearchBarComponent {
   }
 
   @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
+  public keyEvent(event: KeyboardEvent) {
     if (this.ENTER === event.key && this.query) {
       this.queryOutput.emit(this.query);
     }
