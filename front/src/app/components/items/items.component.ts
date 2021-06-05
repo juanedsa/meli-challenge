@@ -12,21 +12,20 @@ export class ItemsComponent {
   public categories: string[];
   public items: Item[];
   public loading: boolean;
+  public isReady: boolean;
 
   private readonly ITEMS_TO_SHOW = 4;
 
   constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute) {
     this.categories = [];
     this.loading = false;
-    this.route.params.subscribe((params) => {
-      if (params.query) {
-        this.search(params.query);
-      }
-    });
+    this.isReady = false;
+    this.getParams();
   }
 
   public search(query: string): void {
     this.loading = true;
+    this.isReady = true;
 
     this.searchService.search(query).subscribe((result) => {
       this.categories = result.categories;
@@ -37,5 +36,13 @@ export class ItemsComponent {
 
   public goToDetail(id: string): void {
     this.router.navigate(['/detalle/' + id]);
+  }
+
+  private getParams(): void {
+    this.route.params.subscribe((params) => {
+      if (params.query) {
+        this.search(params.query);
+      }
+    });
   }
 }

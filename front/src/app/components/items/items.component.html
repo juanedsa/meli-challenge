@@ -9,7 +9,7 @@
     <div class="animated-background animated-background--categories"></div>
   </div>
 
-  <div class="items">
+  <div class="items" *ngIf="isReady">
     <ng-container *ngFor="let item of items">
       <div class="items__item" *ngIf="!loading" (click)="goToDetail(item.id)">
         <figure>
@@ -26,16 +26,16 @@
           <span class="state__name">{{ item.state_name }}</span>
         </div>
       </div>
-      <div class="items__item" *ngIf="loading">
-        <div class="animated-background animated-background--image"></div>
-        <div class="description">
-          <div class="animated-background animated-background--description"></div>
-          <div class="animated-background animated-background--title"></div>
-        </div>
-        <div class="state">
-          <div class="animated-background animated-background--state"></div>
-        </div>
-      </div>
     </ng-container>
+    <div class="items__item" *ngIf="loading">
+      <div class="animated-background animated-background--image"></div>
+      <div class="description">
+        <div class="animated-background animated-background--description"></div>
+        <div class="animated-background animated-background--title"></div>
+      </div>
+      <div class="state">
+        <div class="animated-background animated-background--state"></div>
+      </div>
+    </div>
   </div>
 </section>

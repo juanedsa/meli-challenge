@@ -4,9 +4,19 @@
 .container {
   display: grid;
   grid-template-columns: 1fr minmax($min-layout, $max-layout) 1fr;
-  grid-template-rows: 580px 1fr 1fr;
+  grid-template-rows: 48px 580px 1fr 1fr;
   background-color: $grey-light;
-  min-height: 100vh;
+
+  .categories {
+    grid-column: 2;
+    padding: 16px 0;
+    color: $grey;
+    font-size: 14px;
+
+    &__category:last-child {
+      font-weight: 700;
+    }
+  }
 
   .detail {
     grid-column: 2;

@@ -1,5 +1,13 @@
 <app-search-bar (queryOutput)="search($event)"></app-search-bar>
 <section class="container">
+  <div class="categories" *ngIf="!loading">
+    <span class="categories__category" *ngFor="let category of categories; let last = last"
+      >{{ category }} <span *ngIf="!last"> > </span></span
+    >
+  </div>
+  <div class="categories" *ngIf="loading">
+    <div class="animated-background animated-background--categories"></div>
+  </div>
   <div class="detail" *ngIf="!loading">
     <div class="detail__image">
       <img [src]="picture" alt="" />

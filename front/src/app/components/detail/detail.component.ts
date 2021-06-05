@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
 import { DetailService } from '../../services/detail.service';
 
 @Component({
@@ -11,13 +12,19 @@ export class DetailComponent implements OnInit {
   public description: string;
   public picture: string;
   public condition: string;
+  public categories: string[];
   public soldQuantity: number;
   public title: string;
   public price: number;
   public currency: string;
   public loading: boolean;
 
-  constructor(private router: Router, private detailService: DetailService, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private detailService: DetailService,
+    private route: ActivatedRoute,
+    private searchService: SearchService
+  ) {
     this.description = '';
     this.picture = '';
     this.condition = '';
@@ -26,10 +33,13 @@ export class DetailComponent implements OnInit {
     this.price = 0;
     this.currency = '';
     this.loading = true;
+    this.categories = [];
   }
 
   public ngOnInit(): void {
     this.getParams();
+
+    this.searchService.categories$.subscribe((categories) => (this.categories = categories));
   }
 
   get productCondition(): string {
