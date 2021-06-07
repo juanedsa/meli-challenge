@@ -40,16 +40,23 @@ $ cd front
 $ ng serve
 ```
 
+El frontend quedara en la ruta por defecto `localhost:4200`
+
 Correr pruebas unitarias
 
 ```sh
 $ ng test --no-watch --code-coverage
 ```
 
+Para ver el reporte de pruebas unitarias ir a la siguiente ruta
 
+`[Raiz Proyecto]\front\coverage\Chrome 91.0.4472.77 (Windows 10)`
 
+y abrir el archivo `index.html`
 
-El frontend quedara en la ruta por defecto `localhost:4200`
+Reporte de pruebas
+
+![](https://raw.githubusercontent.com/juanedsa/meli-challenge/master/front/images/coverage.png)
 
 
 **Juan Salazar**
