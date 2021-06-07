@@ -22,7 +22,39 @@ describe('SearchBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit the query param', () => {
+    const emitSpy = spyOn(component.queryOutput, 'emit');
+    component.query = 'query';
+    component.search();
+    expect(emitSpy).toHaveBeenCalledWith('query');
+  });
+
+  it('should not emit the query param', () => {
+    const emitSpy = spyOn(component.queryOutput, 'emit');
+    component.query = null;
+    component.search();
+    expect(emitSpy).not.toHaveBeenCalledWith('query');
+  });
+
+  it('should emit query', () => {
+    const event = {
+      key: (component as any).ENTER
+    } as KeyboardEvent;
+
+    const emitSpy = spyOn(component.queryOutput, 'emit');
+    component.query = 'query';
+    component.keyEvent(event);
+    expect(emitSpy).toHaveBeenCalledWith('query');
+  });
+
+  it('should not emit query', () => {
+    const event = {
+      key: ''
+    } as KeyboardEvent;
+
+    const emitSpy = spyOn(component.queryOutput, 'emit');
+    component.query = 'query';
+    component.keyEvent(event);
+    expect(emitSpy).not.toHaveBeenCalledWith('query');
   });
 });
